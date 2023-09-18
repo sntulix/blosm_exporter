@@ -17,7 +17,13 @@ def export_active_object2glb(save_dir, infofile_path, obj):
 	print(save_filename)
 	rot = obj.rotation_euler
 	f = open(infofile_path, "a")
-	f.write(obj.name + "\t" + str(obj.location[0]) + "\t" + str(obj.location[1]) + "\t" + str(obj.location[2]) + "\t" + str(degrees(rot[0])) + "\t" + str(degrees(rot[1])) + "\t" + str(degrees(rot[2])) + "\t" + str(obj.scale[0]) + "\t" + str(obj.scale[1]) + "\t" + str(obj.scale[2]) + "\n")
+	f.write(obj.name + "\t"
+		+ str(obj.location[0]) + "\t" + str(obj.location[1]) + "\t" + str(obj.location[2]) + "\t"
+		+ str(degrees(rot[0])) + "\t" + str(degrees(rot[1])) + "\t" + str(degrees(rot[2])) + "\t"
+		+ str(obj.scale[0]) + "\t" + str(obj.scale[1]) + "\t" + str(obj.scale[2]) + "\t"
+		+ str(obj.dimensions[0]) + "\t" + str(obj.dimensions[1]) + "\t" + str(obj.dimensions[2])
+		+"\n"
+	)
 	bpy.ops.export_scene.gltf(filepath=save_path, export_current_frame=True, export_format='GLTF_EMBEDDED', export_image_format='JPEG', export_jpeg_quality=80, use_selection=True)
 	f.close()
 
