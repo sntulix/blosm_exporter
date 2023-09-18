@@ -27,7 +27,9 @@ def export_active_object2glb(save_dir, infofile_path, obj):
 	bpy.ops.export_scene.gltf(filepath=save_path, export_current_frame=True, export_format='GLTF_EMBEDDED', export_image_format='JPEG', export_jpeg_quality=80, use_selection=True)
 	f.close()
 
-os.remove(infofile_path)
+if os.path.exists(infofile_path):
+	os.remove(infofile_path)
+
 for o in bpy.context.scene.objects:
 	if o.type == 'MESH':
 		bpy.ops.object.select_all(action='DESELECT')
