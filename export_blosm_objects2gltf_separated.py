@@ -25,8 +25,14 @@ def export_active_object2glb(save_dir, infofile_path, obj):
 		+ str(obj.dimensions[0]) + "\t" + str(obj.dimensions[1]) + "\t" + str(obj.dimensions[2])
 		+"\n"
 	)
-	bpy.ops.export_scene.gltf(filepath=save_path, export_current_frame=True, export_format='GLTF_EMBEDDED', export_image_format='JPEG', export_jpeg_quality=80, use_selection=True)
 	f.close()
+	tmp_loc = obj.location[::]
+	obj.location[0] = 0
+	obj.location[1] = 0
+	obj.location[2] = 0
+	bpy.ops.export_scene.gltf(filepath=save_path, export_current_frame=True, export_format='GLTF_EMBEDDED', export_image_format='JPEG', export_jpeg_quality=80, use_selection=True)
+	obj.location = tmp_loc
+
 
 if os.path.exists(infofile_path):
 	os.remove(infofile_path)
