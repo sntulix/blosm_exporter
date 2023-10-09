@@ -2,7 +2,7 @@
 export_blosm_objects2gltf_separated.py.
 This script exports the city map loaded in Blosm as individual objects to gltf.
 And create modelfile list.
-Date: 20230913
+Date: 20231009
 """
 
 import os
@@ -16,6 +16,7 @@ def export_active_object2glb(save_dir, infofile_path, obj):
 	save_path = save_dir + save_filename
 	print(save_filename)
 	rot = obj.rotation_euler
+
 	f = open(infofile_path, "a")
 	f.write(obj.name + "\t"
 		+ str(obj.location[0]) + "\t" + str(obj.location[1]) + "\t" + str(obj.location[2]) + "\t"
@@ -29,6 +30,7 @@ def export_active_object2glb(save_dir, infofile_path, obj):
 
 if os.path.exists(infofile_path):
 	os.remove(infofile_path)
+
 
 for o in bpy.context.scene.objects:
 	if o.type == 'MESH':
