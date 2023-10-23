@@ -13,16 +13,10 @@ save_dir = os.path.expanduser("~/") + "OneDrive/3D/blender/script/blsosm_exporte
 list_filename = "modellist.tsv"
 listfile_path = save_dir + list_filename
 
-def export_active_object2glb(save_dir, listfile_path, obj):
-    # init file name
-    save_filename = obj.name+".glb"
-    save_path = save_dir + save_filename
-    print(save_filename)
-
+def writeList(listfile_path, obj):
     obj.select_set(True)
     rot = obj.rotation_euler
 
-    # write data to the list.
     f = open(listfile_path, "a")
     f.write(obj.name + "\t"
         + str(obj.location[0]) + "\t" + str(obj.location[1]) + "\t" + str(obj.location[2]) + "\t"
@@ -33,7 +27,8 @@ def export_active_object2glb(save_dir, listfile_path, obj):
     )
     f.close()
 
-    # export mesh
+
+def exportMesh(save_path, obj):
     ## set to origin (0,0,0) temporary.
     tmp_loc = obj.location[::]
     obj.location[0] = 0
@@ -48,6 +43,19 @@ def export_active_object2glb(save_dir, listfile_path, obj):
         use_selection=True)
     ## restore location
     obj.location = tmp_loc
+
+
+def export_active_object2glb(save_dir, listfile_path, obj):
+    # init file name
+    save_filename = obj.name+".glb"
+    save_path = save_dir + save_filename
+    print(save_filename)
+
+    # write data to the list.
+    writeList(listfile_path, obj)
+
+    # export mesh
+    exportMesh(save_path, obj)
 
 
 # delete old list.
