@@ -9,7 +9,7 @@ import os
 import bpy
 from math import degrees
 
-save_dir = os.path.expanduser("~/") + "OneDrive/3D/blender/script/blsosm_exporter"
+save_dir = os.path.expanduser("~/") + "OneDrive/3D/blender/script/blsosm_exporter/"
 list_filename = "modellist.tsv"
 listfile_path = save_dir + list_filename
 
