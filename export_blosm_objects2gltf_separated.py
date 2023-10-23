@@ -6,6 +6,8 @@ Date: 20231009
 """
 
 import os
+import bpy
+from math import degrees
 
 save_dir = "c:\\models\\"
 infofile_path = save_dir+"modellist.tsv"
