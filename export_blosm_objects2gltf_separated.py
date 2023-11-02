@@ -9,6 +9,7 @@ import os
 import bpy
 from math import degrees
 
+exclude_names="Cube Cube2 "
 save_dir = os.path.expanduser("~/") + "OneDrive/3D/blender/script/blsosm_exporter/"
 list_filename = "modellist.tsv"
 listfile_path = save_dir + list_filename
@@ -45,17 +46,25 @@ def exportMesh(save_path, obj):
     obj.location = tmp_loc
 
 
-def export_active_object2glb(save_dir, listfile_path, obj):
-    # init file name
-    save_filename = obj.name+".glb"
-    save_path = save_dir + save_filename
-    print(save_filename)
+def export_active_object2glb(save_dir, listfile_path, obj, exclude_names=""):
+    exclude_flag = False
+    if exclude_names!="":
+        exclude_list = exclude_names.split(' ')
+        for ex_key in exclude_list:
+            if ex_key in obj.name:
+                exclude_flag = True
 
-    # write data to the list.
-    writeList(listfile_path, obj)
+    if exclude_flag==False:
+        # init file name
+        save_filename = obj.name+".glb"
+        save_path = save_dir + save_filename
+        print(save_filename)
 
-    # export mesh
-    exportMesh(save_path, obj)
+        # write data to the list.
+        writeList(listfile_path, obj)
+
+        # export mesh
+        exportMesh(save_path, obj)
 
 
 # delete old list.
@@ -66,4 +75,4 @@ if os.path.exists(listfile_path):
 for obj in bpy.context.scene.objects:
     if obj.type == 'MESH':
         bpy.ops.object.select_all(action='DESELECT')
-        export_active_object2glb(save_dir, listfile_path, obj)
+        export_active_object2glb(save_dir, listfile_path, obj, exclude_names)
