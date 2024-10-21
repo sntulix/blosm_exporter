@@ -2,7 +2,9 @@
 export_blosm_objects2gltf_separated.py.
 This script exports the city map loaded in Blosm as individual objects to gltf.
 And create modelfile list.
+# for Blender v3 LTS later
 Date: 20231009
+Update: 20241021
 """
 
 import os
