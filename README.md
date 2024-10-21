@@ -26,3 +26,10 @@ This Blender script exports the objects of city map loaded by Blosm (OpenStreetM
 
 Check individual check button before importing buildings with Blosm. Because it would not export objects individualiy from the one object.
 
+## スクリーンショット / Screenshot
+
+### エクスポートしたシーン / Scene exported
+<img width="1552" alt="エクスポートしたシーン" src="https://github.com/user-attachments/assets/0b9e0a48-bed1-4135-ab9f-01946705d8b9">
+
+### エクスポートされたファイル / Files exported
+<img width="717" alt="エクスポートされたファイル" src="https://github.com/user-attachments/assets/47175cf7-ecec-4e35-be5c-6ed72114b8be">
