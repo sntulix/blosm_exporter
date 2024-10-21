@@ -12,7 +12,7 @@ import bpy
 from math import degrees
 
 exclude_names="Cube Cube2 "
-save_dir = os.path.expanduser("~/") + "OneDrive/3D/blender/script/blsosm_exporter/"
+save_dir = os.path.expanduser("~/") + "Downloads/tmp/"
 list_filename = "modellist.tsv"
 listfile_path = save_dir + list_filename
 
@@ -53,7 +53,7 @@ def export_active_object2glb(save_dir, listfile_path, obj, exclude_names=""):
     if exclude_names!="":
         exclude_list = exclude_names.split(' ')
         for ex_key in exclude_list:
-            if ex_key in obj.name:
+            if ex_key != '' and ex_key in obj.name:
                 exclude_flag = True
 
     if exclude_flag==False:
